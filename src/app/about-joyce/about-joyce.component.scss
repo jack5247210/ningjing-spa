@@ -1,0 +1,340 @@
+/* ============================================================
+   寧境 · About Joyce Component — 視覺升級版
+   ============================================================ */
+
+.intro-section {
+  padding: 72px 0 100px;
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(138, 154, 91, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 5% 80%, rgba(180, 140, 108, 0.08) 0%, transparent 45%),
+    var(--color-base);
+  min-height: calc(100vh - var(--header-h, 82px));
+}
+
+/* ── Intro Text Card ───────────────────────────────────── */
+.intro-text {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 72px 80px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 88px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Decorative corner flourish */
+  &::before {
+    content: '✦';
+    position: absolute;
+    top: 28px;
+    right: 40px;
+    color: var(--color-gold);
+    font-size: 0.8rem;
+    opacity: 0.35;
+  }
+
+  &::after {
+    content: '✦';
+    position: absolute;
+    bottom: 28px;
+    left: 40px;
+    color: var(--color-gold);
+    font-size: 0.8rem;
+    opacity: 0.25;
+  }
+
+  @media (max-width: 768px) {
+    padding: 44px 28px;
+  }
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 300;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  letter-spacing: 0.14em;
+
+  /* Gold underline */
+  &::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+    margin: 20px auto 0;
+  }
+}
+
+/* Small eyebrow above title */
+.page-title::before {
+  content: 'ABOUT JOYCE';
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold);
+  font-weight: 300;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.description {
+  font-size: 1.02rem;
+  line-height: 2.1;
+  color: var(--color-text);
+  margin-bottom: 28px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ── Tree Section ──────────────────────────────────────── */
+.tree-section {
+  padding: 0 0 40px;
+}
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 300;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  letter-spacing: 0.15em;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+    margin: 18px auto 0;
+  }
+}
+
+.section-desc {
+  text-align: center;
+  color: var(--color-text-light);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 72px;
+  font-style: italic;
+}
+
+/* ── Timeline Tree ─────────────────────────────────────── */
+.timeline-tree {
+  position: relative;
+  padding: 32px 0;
+
+  /* Center vertical stem */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom,
+        transparent,
+        rgba(212, 175, 55, 0.4) 8%,
+        rgba(212, 175, 55, 0.5) 50%,
+        rgba(212, 175, 55, 0.4) 92%,
+        transparent);
+    transform: translateX(-50%);
+  }
+}
+
+.tree-node {
+  position: relative;
+  margin-bottom: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+
+  &.even {
+    justify-content: flex-end;
+  }
+
+  /* Timeline dot */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 36px;
+    width: 14px;
+    height: 14px;
+    background: var(--color-base);
+    border: 2px solid var(--color-gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow:
+      0 0 0 4px rgba(212, 175, 55, 0.12),
+      0 2px 8px rgba(212, 175, 55, 0.2);
+    transition: all var(--transition);
+  }
+
+  &:hover::before {
+    background: var(--color-gold);
+    transform: translateX(-50%) scale(1.25);
+    box-shadow:
+      0 0 0 6px rgba(212, 175, 55, 0.15),
+      0 4px 12px rgba(212, 175, 55, 0.3);
+  }
+}
+
+.node-content {
+  width: 44%;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: var(--radius-md);
+  padding: 36px 44px;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition);
+  border: 1px solid var(--color-border);
+  position: relative;
+
+  /* Arrow connector */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 38px;
+    width: 28px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.3));
+  }
+
+  .tree-node:not(.even) &::after {
+    right: 100%;
+    background: linear-gradient(to left, transparent, rgba(212, 175, 55, 0.3));
+  }
+
+  .tree-node.even &::after {
+    left: 100%;
+  }
+
+  .tree-node.even & {
+    margin-right: 28px;
+  }
+
+  .tree-node:not(.even) & {
+    margin-left: 28px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(212, 175, 55, 0.35);
+  }
+}
+
+.node-year {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-primary);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+  letter-spacing: 0.12em;
+
+  /* Year decoration */
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-gold);
+    margin-right: 12px;
+    vertical-align: middle;
+    opacity: 0.65;
+    margin-bottom: 2px;
+  }
+}
+
+.cert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  li {
+    position: relative;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    padding-left: 22px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      background: rgba(138, 154, 91, 0.7);
+      border-radius: 50%;
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .node-content {
+    width: 42%;
+    padding: 28px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 56px 0 80px;
+  }
+
+  .timeline-tree::before {
+    left: 20px;
+  }
+
+  .tree-node {
+    justify-content: flex-start !important;
+    margin-bottom: 36px;
+
+    &::before {
+      left: 20px !important;
+      top: 28px;
+    }
+
+    .node-content {
+      width: calc(100% - 52px);
+      margin-left: 52px !important;
+      margin-right: 0 !important;
+      padding: 24px 24px;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .node-year {
+      font-size: 1.25rem;
+    }
+  }
+}
